@@ -14,9 +14,15 @@ app.post("/api/blog-protect", (req, res) => {
   const enteredPassword = req.body.password;
   const correctPassword = "Dv3277426269@p";
   if (enteredPassword === correctPassword) {
-    res.redirect(302, "https://braininventoryblogs.com/wordpress");
+    res.status(302).json({
+      redirectUrl: "https://braininventoryblogs.com/wordpress",
+      error: false,
+      success: true,
+    });
   } else {
-    res.status(401).json({ error: "Wrong password" });
+    res
+      .status(401)
+      .json({ success: false, error: true, errorMessage: "Wrong password" });
   }
 });
 
