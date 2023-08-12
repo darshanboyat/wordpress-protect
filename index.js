@@ -7,6 +7,9 @@ const app = Express();
 app.use(cors());
 app.options("*", cors());
 app.use(bodyParser.json());
+app.get("/", (req, res) => {
+  return res.send("<h1>Ok Tested</h1>");
+});
 app.post("/api/blog-protect", (req, res) => {
   const enteredPassword = req.body.password;
   const correctPassword = "Dv3277426269@p";
